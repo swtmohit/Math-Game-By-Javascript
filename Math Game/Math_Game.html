@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: aquamarine;
+        }
+        .main{
+            width: 500px;
+            height: 300px;
+            background-color: bisque;
+            border: 15px inset blueviolet;
+            border-radius: 10px;
+            margin: 100px auto;
+        }
+        p{
+            direction: rtl;
+            margin-top: 20px;
+            font-size: x-large;
+            margin-right: 20px;
+        }
+        .sub{
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .sub2 input{
+            width: 400px;
+            height: 50px;
+            font-size: 20px;
+            text-align: center;
+            margin-left: 50px;
+        }
+        .btn{
+            display: flex;
+            justify-content: center;
+            margin-top: 25px;
+        }
+        .btn button{
+            width: 200px;
+            height: 50px;
+            background-color: blueviolet;
+            cursor: pointer;
+            color: white;
+            border-radius: 5px;
+            font-size: large;
+            font-weight: bolder;
+
+        }
+        .btn button:hover{
+            color: blueviolet;
+            background-color: aquamarine;
+            transition: 0.2s linear;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main">
+        <p> <b>Score:</b>  <span id="count">0</span></p>
+        <div class="sub">
+            <h1>What Is <span id="first"></span> Multiply By <span id="second"></span> ?</h1>
+        </div>
+        <div class="sub2">
+            <input type="number" id="inp" autofocus placeholder="Enter Your Answer">
+        </div>
+        <div class="btn">
+            <button id="btn">Submit</button>
+        </div>
+    </div>
+
+    <script>
+        let value;
+        let result;
+        let count = 0;
+        let btn = document.getElementById("btn");
+        let first = document.getElementById("first");
+        let second = document.getElementById("second");
+        let inp = document.getElementById("inp");
+        first.innerHTML = Math.ceil(Math.random()*10)
+        second.innerHTML = Math.ceil(Math.random()*10)
+        inp.addEventListener("input" , function(){
+            value = this.value
+        })
+        btn.addEventListener("click" , function(){
+        result = first.innerHTML * second.innerHTML;
+        console.log(result);
+        first.innerHTML = Math.ceil(Math.random()*10)
+        second.innerHTML = Math.ceil(Math.random()*10)
+        if(result == value){
+            count = count + 1;
+            document.getElementById('count').textContent = count;
+        }
+        if(result != value){
+            count = count - 1;
+            document.getElementById('count').textContent = count;
+        }
+        inp.value = "";
+        })
+    </script>
+    
+    
+</body>
+</html>
